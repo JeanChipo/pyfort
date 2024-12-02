@@ -1,9 +1,9 @@
 from random import randint, choice
 
-def roulette_mathematique(joueur:str)->None:
+def roulette_mathematique(joueur:str)->int:
     """
     :param joueur: nom du joueur
-    :return:
+    :return: le nombre de clés gagnées
     """
     nombres = [randint(1,20) for _ in range(5)]
     op = choice(['+','-','*'])
@@ -29,5 +29,9 @@ def roulette_mathematique(joueur:str)->None:
             result = -1
 
     reponse = int(input("Votre réponse : "))
-    if reponse == result: print("Bonne réponse! Vous avez gagné une clé.")
-    else: print("Mauvaise réponse! Vous avez perdu la clé.")
+    if reponse == result:
+        print("Bonne réponse! Vous avez gagné une clé.")
+        return 1
+    else:
+        print("Mauvaise réponse! Vous avez perdu la clé.")
+        return 0
