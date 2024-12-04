@@ -1,6 +1,23 @@
 from random import randint, choice
 
-def roulette_mathematique(joueur:str)->int:
+def factorielle(n:int)->int:
+    fact = 1
+    for i in range(2,n+2):
+        fact *= i-1
+    return fact
+
+def epreuve_math_factorielle()->bool:
+    n = randint(1,10)
+    reponse = int(input(f"calculer la factorielle de {n}"))
+    if reponse ==  factorielle(n):
+        print("Correct! Vous gagnez une clé.")
+        return True
+    print("Faux! Vous perdez la clé.")
+    return False
+
+##################################################
+
+def roulette_mathematique(joueur:str)->bool:
     """
     :param joueur: nom du joueur
     :return: le nombre de clés gagnées
@@ -30,8 +47,7 @@ def roulette_mathematique(joueur:str)->int:
 
     reponse = int(input("Votre réponse : "))
     if reponse == result:
-        print("Bonne réponse! Vous avez gagné une clé.")
-        return 1
-    else:
-        print("Mauvaise réponse! Vous avez perdu la clé.")
-        return 0
+        print("Correct! Vous gagnez une clé.")
+        return True
+    print("Faux! Vous perdez la clé.")
+    return False
