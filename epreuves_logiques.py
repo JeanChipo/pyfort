@@ -6,23 +6,25 @@ def tictactoe(joueur):
     Créer un jeu de Tic-Tac-Toe avec une fonction pour jouer et une fonction pour vérifier la victoire
 
     :param joueur: Le nom du joueur
-    :return: nombre de clée gagner
+    :return: epreuve gagner ou perdu avec True or False
     """
     plateau = [[".",".","."],[".",".","."],[".",".","."]]
     joueur = "bob"
 
     def saisie_joueur(joueur:str) -> tuple:
         """fonction qui demande et vérifie la saisie de l'utilisateur"""
-        cordoneeX = int(input(f"{joueur} veuillez saisir la ligne dans laquelle vous voulez jouer : ")) - 1
-        while cordoneeX < 0 or cordoneeX > 2: #demande en boucle jusqu'a que la saise de l'utilisateur sois correcte en X
+        cordoneeX = input(f"{joueur} veuillez saisir la ligne dans laquelle vous voulez jouer : ")
+        while ord(cordoneeX) < ord("1") or ord(cordoneeX) > ord("3"): #demande en boucle jusqu'a que la saise de l'utilisateur sois correcte en X
             print("Saisie incorrect")
-            cordoneeX = int(input(f"{joueur} veuillez saisir la ligne dans laquelle vous voulez jouer : ")) - 1
+            cordoneeX = input(f"{joueur} veuillez saisir la ligne dans laquelle vous voulez jouer : ")
+        cordoneeX = int(cordoneeX) - 1
 
 
-        cordoneeY = int(input(f"{joueur} veuillez saisir la colonne dans laquelle vous voulez jouer : ")) - 1
-        while cordoneeY < 0 or cordoneeY > 2: #demande en boucle jusqu'a que la saise de l'utilisateur sois correcte en Y
+        cordoneeY = input(f"{joueur} veuillez saisir la colonne dans laquelle vous voulez jouer : ")
+        while ord(cordoneeY) < ord("1") or ord(cordoneeY) > ord("3"): #demande en boucle jusqu'a que la saise de l'utilisateur sois correcte en Y
             print("Saisie incorrect")
-            cordoneeY = int(input(f"{joueur} veuillez saisir la colonne dans laquelle vous voulez jouer : ")) - 1
+            cordoneeY = input(f"{joueur} veuillez saisir la colonne dans laquelle vous voulez jouer : ")
+        cordoneeY = int(cordoneeY) - 1
 
         saisie_j = (cordoneeX, cordoneeY)
         return saisie_j
@@ -139,14 +141,14 @@ def tictactoe(joueur):
     #regarde qui a gagner et affiche le nom du gagnant
     if jeu == 1:
         print("Vous avez gagner")
-        return 1
+        return True
     elif jeu == -1:
         for i in range(3):
             print(f"{plateau[i][0]} │ {plateau[i][1]} │ {plateau[i][2]}")
             if i!= 2:
                 print("──┼───┼──")
         print("Vous avez perdu")
-        return 0
+        return False
     else:
         for i in range(3):
             print(f"{plateau[i][0]} │ {plateau[i][1]} │ {plateau[i][2]}")
@@ -154,3 +156,6 @@ def tictactoe(joueur):
                 print("──┼───┼──")
         print("Egalité, pour déterminer le gagnant une autre partie va être jouée")
         tictactoe(joueur)
+
+
+tictactoe("bob")
