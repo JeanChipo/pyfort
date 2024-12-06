@@ -1,11 +1,11 @@
 from random import randint, choice
 
-def resoudre_equation_lineaire():
+def resoudre_equation_lineaire()->tuple:
     """
     :return: un tuple de 3 elements contenant a, b, et la solution de l'équation ax+b = 0
     """
     a,b = randint(1,10), randint(1,10)
-    return a,b, round(-b/a,2) #car -b/a est solution de l'equation ax+b=0
+    return a,b, round(-b/a, 2) #car -b/a est solution de l'equation ax+b=0
 
 def epreuve_math_equation()->bool:
     """
