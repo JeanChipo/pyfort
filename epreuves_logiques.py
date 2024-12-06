@@ -156,6 +156,3 @@ def tictactoe(joueur):
                 print("──┼───┼──")
         print("Egalité, pour déterminer le gagnant une autre partie va être jouée")
         tictactoe(joueur)
-
-
-tictactoe("bob")
