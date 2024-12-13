@@ -1,27 +1,8 @@
 from random import randint, choice
 
-def resoudre_equation_lineaire()->tuple:
-    """
-    :return: un tuple de 3 elements contenant a, b, et la solution de l'équation ax+b = 0
-    """
-    a,b = randint(1,10), randint(1,10)
-    return a,b, round(-b/a, 2) #car -b/a est solution de l'equation ax+b=0
-
-def epreuve_math_equation()->bool:
-    """
-    :return: True si une clé est gagnée, False sinon
-    """
-    (a,b,x) = resoudre_equation_lineaire()
-    print(x)
-    reponse = int(input(f"Résoud l'équation suivante (si c'est une fraction arrondir \
-à 2 chiffres après la virgule) : {a}x + {b} = 0 : "))
-    if reponse ==  x:
-        print("Correct! Vous gagnez une clé.")
-        return True
-    print("Faux! Vous perdez la clé.")
-    return False
-
-##################################################
+    ################################
+    ## Épreuve de la factorielle  ##
+    ################################
 
 def factorielle(n:int)->int:
     """
@@ -45,7 +26,92 @@ def epreuve_math_factorielle()->bool:
     print("Faux! Vous perdez la clé.")
     return False
 
-##################################################
+    #####################################
+    ## Épreuve de l'équation linéaire  ##
+    #####################################
+
+def resoudre_equation_lineaire()->tuple:
+    """
+    :return: un tuple de 3 elements contenant a, b, et la solution de l'équation ax+b = 0
+    """
+    a,b = randint(1,10), randint(1,10)
+    return a,b, round(-b/a, 2) #car -b/a est solution de l'equation ax+b=0
+
+def epreuve_math_equation()->bool:
+    """
+    :return: True si une clé est gagnée, False sinon
+    """
+    (a,b,x) = resoudre_equation_lineaire()
+    print(x)
+    reponse = int(input(f"Résoud l'équation suivante (si c'est une fraction arrondir \
+à 2 chiffres après la virgule) : {a}x + {b} = 0 : "))
+    if reponse ==  x:
+        print("Correct! Vous gagnez une clé.")
+        return True
+    print("Faux! Vous perdez la clé.")
+    return False
+
+    ###################################
+    ## Épreuve des Nombres Premiers  ##
+    ###################################
+
+def est_premier(n:int)->bool:
+    """
+    :param n: un entier qu'il faut verifier
+    :return: True si n est premier, False sinon
+    """
+    if n == 1:
+        return False
+    for i in range(2,n):
+        if n % i == 0:  # si un nombre inférieur à n le divise
+            return False
+    return True
+
+def premier_plus_proche(n:int)->int:
+    """
+    :param n: un entier premier
+    :return: l'entier premier le plus proche de n
+    """
+    m = n+1
+    while m > n :
+        if est_premier(m):
+            return m
+        m += 1
+
+def est_entier(n:str)->bool:
+    """
+    :param n: une chaine de caractères
+    :return: True si n est entier, False sinon
+    """
+    entier = True
+    for e in n:
+        if not(ord('0') <= ord(e) <= ord('9')):
+            entier = False
+            break
+    return entier
+
+def epreuve_math_premier()->bool:
+    """
+    :return: True si une clé est gagnée, False sinon
+    """
+    n = randint(10,20)
+    print(f"Épreuve de Mathématiques: Trouver le nombre premier le plus proche de {n}")
+    while True:
+        reponse = input("Votre réponse: ")
+        if est_entier(reponse):
+            reponse = int(reponse)
+            break   # réponse valide
+        else:   # réponse non valide
+          print("Saisie incorrect")
+    if reponse == premier_plus_proche(n):
+        print("Correct! Vous gagnez une clé.")
+        return True
+    print("Faux! Vous perdez la clé.")
+    return False
+
+    ##########################################
+    ## Épreuve de la roulette mathematique  ##
+    ##########################################
 
 def roulette_mathematique()->bool:
     """
