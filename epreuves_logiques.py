@@ -1,7 +1,67 @@
-from random import choice,randint
+from random import choice, randint
 
 
+def affiche_batonnets(n:int)->None:
+    """ affiche n batonnets """
+    print("|" * n)
 
+def joueur_retrait(n:int, nb_bat:str)->int:
+    """
+    :param n: le nombre de batonnets restant
+    :param nb_bat: le nombre de batonnets à retirer
+    :return: le nouveau nombre de batonnets restant
+    """
+    while True:
+        nb_bat = input("Combien de bâtonnets voulez-vous retirer (1, 2 ou 3) ?")
+        if (len(nb_bat) == 1) and ('1' <= nb_bat <= '3') and (int(nb_bat) <= n):
+            break   # réponse valide
+        else:   # réponse non valide
+          print("Saisie incorrect")
+    return int(nb_bat)
+
+def maitre_retrait(n:int)->int:
+    """
+    :param n: le nombre de batonnets restant
+    :return: le nouveau nombre de batonnets restant
+    """
+    reste = n%4
+    nb_retire = randint(1,3)
+    match reste:
+        case 0: nb_retire = 3
+        case 1: pass
+        case 2: nb_retire = 1
+        case 3: nb_retire = 2
+        case _: print("How")
+    return nb_retire
+
+def jeu_nim()->bool:
+    """
+    jeu du NIM :
+    Le joueur et le maître du jeu (IA) retirent à tour de rôle 1, 2 ou 3 bâtonnets d'un total de 20.
+    Celui qui retire le dernier bâtonnet perd la partie.
+    """
+    nb_batonnet = 20
+    tour_du_joueur = choice([True,False])
+
+    while nb_batonnet != 0:
+        affiche_batonnets(nb_batonnet)
+        if tour_du_joueur:
+            print("Tour du joueur.")
+            nb_batonnet -= joueur_retrait(nb_batonnet, input("Combien de bâtonnets voulez-vous retirer (1, 2 ou 3) ?"))
+            tour_du_joueur = False
+        else:
+            x = maitre_retrait(nb_batonnet)
+            print(f"Le maître du jeu retire {x} bâtonnets.")
+            nb_batonnet -= x
+            tour_du_joueur = True
+
+    if not tour_du_joueur:
+        print("Le joueur a retiré le dernier bâtonnet. Le maître gagne !")
+        return True
+    print("Le maître a retiré le dernier bâtonnet. Le joueur gagne !")
+    return False
+
+##################################################
 
 def saisie_joueur(joueur:str) -> tuple:
     """fonction qui demande et vérifie la saisie de l'utilisateur"""
