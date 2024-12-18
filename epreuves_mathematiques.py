@@ -1,8 +1,8 @@
 from random import randint, choice
 
-    ################################
-    ## Fonctions de vérification  ##
-    ################################
+################################
+## Fonctions de vérification  ##
+################################
 
 def est_entier(n:str)->bool:
     """
@@ -36,9 +36,9 @@ def est_decimal(n:str)->bool:
                 break
     return decimal
 
-    ################################
-    ## Épreuve de la factorielle  ##
-    ################################
+################################
+## Épreuve de la factorielle  ##
+################################
 
 def factorielle(n:int)->int:
     """
@@ -64,9 +64,9 @@ def epreuve_math_factorielle()->bool:
     print("Faux! Vous perdez la clé.")
     return False
 
-    #####################################
-    ## Épreuve de l'équation linéaire  ##
-    #####################################
+#####################################
+## Épreuve de l'équation linéaire  ##
+#####################################
 
 def resoudre_equation_lineaire()->tuple:
     """
@@ -89,9 +89,9 @@ def epreuve_math_equation()->bool:
     print("Faux! Vous perdez la clé.")
     return False
 
-    ###################################
-    ## Épreuve des Nombres Premiers  ##
-    ###################################
+###################################
+## Épreuve des Nombres Premiers  ##
+###################################
 
 def est_premier(n:int)->bool:
     """
@@ -132,9 +132,9 @@ def epreuve_math_premier()->bool:
     print("Faux! Vous perdez la clé.")
     return False
 
-    ##########################################
-    ## Épreuve de la roulette mathematique  ##
-    ##########################################
+##########################################
+## Épreuve de la roulette mathematique  ##
+##########################################
 
 def roulette_mathematique()->bool:
     """
@@ -173,9 +173,9 @@ def roulette_mathematique()->bool:
     print("Faux! Vous perdez la clé.")
     return False
 
-    ######################################################
-    ## Fonction epreuve math (selection d'une épreuve)  ##
-    ######################################################
+######################################################
+## Fonction epreuve math (selection d'une épreuve)  ##
+######################################################
 
 def epreuve_math()->None:
     """ Execute une fonction aléatoire du module epreuves_mathematiques """
