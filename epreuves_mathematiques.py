@@ -73,17 +73,17 @@ def resoudre_equation_lineaire()->tuple:
     :return: un tuple de 3 elements contenant a, b, et la solution de l'équation ax+b = 0
     """
     a,b = randint(1,10), randint(1,10)
-    return a,b, round(-b/a, 2) #car -b/a est solution de l'equation ax+b=0
+    return a,b, round(-b/a, 2) #car -b/a est solution de l'equation ax+b=0 ( une erreur est possible car round() n'arrondit pas toujours pas exces avec 5)
 
 def epreuve_math_equation()->bool:
     """
     :return: True si une clé est gagnée, False sinon
     """
     (a,b,x) = resoudre_equation_lineaire()
-    reponse = input(f"Résoudre l'équation suivante (si c'est une fraction arrondir à 2 chiffres après la virgule) : {a}x + {b} = 0 : ")
+    reponse = input(f"Résoudre l'équation suivante (si c'est une fraction, on arrondira à 2 chiffres après la virgule et on mettra un point à la place de la virgule) : {a}x + {b} = 0 : ")
     while not est_decimal(reponse):
-        reponse = input("Merci de saisir un entier : ")
-    if float(reponse) == float(x):
+        reponse = input("Merci de saisir un décimal : ")
+    if round(float(reponse),2) == float(x):
         print("Correct! Vous gagnez une clé.")
         return True
     print("Faux! Vous perdez la clé.")
@@ -150,17 +150,20 @@ def roulette_mathematique()->bool:
             result = 0
             for n in nombres:
                 result += n
-            print("Calculez le résultat en combinant ces nombres avec une addition.")
+            print("Donnez le résultat de l'addition de tout les nombres entre eux.\n"+
+                  "Exemple : [1,2,3] = 1+2+3 = 6")
         case '-':
             result = 0
             for n in nombres:
                 result -= n
-            print("Calculez le résultat en combinant ces nombres avec une soustraction.")
+            print("Donnez le résultat de la soustraction de tout les nombres entre eux.\n"+
+                  "Exemple : [1,2,3] = -1-2-3 = -6")
         case '*':
             result = 1
             for n in nombres:
                 result *= n
-            print("Calculez le résultat en combinant ces nombres avec une multiplication.")
+            print("Donnez le résultat de la multiplication de tout les nombres entre eux.\n"+
+                  "Exemple : [1,2,3] = 1 * 2 * 3 = 6")
         case _:
             result = -1
 
