@@ -86,4 +86,11 @@ def menu_epreuves():
         case 3: return epreuve_hasard()
         case 4: return enigme_pere_fouras()
 
-
+def choisir_joueur(equipe)->dict:
+    for i in range(len(equipe)):
+        if equipe[i]["est_leader"]: print(f"{i+1}. {equipe[i]['nom']} ({equipe[i]['profession']}) - Leader")
+        else: print(f"{i+1}. {equipe[i]['nom']} ({equipe[i]['profession']}) - Membre")
+    n = int(input("Entrez le numéro du joueur: "))
+    while not 1 <= n <= len(equipe):
+        n = int(input(f"Merci de saisir un entier entre 1 et {len(equipe)} : "))
+    return equipe[n-1]
