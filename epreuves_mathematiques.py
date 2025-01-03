@@ -80,7 +80,8 @@ def epreuve_math_equation()->bool:
     :return: True si une clé est gagnée, False sinon
     """
     (a,b,x) = resoudre_equation_lineaire()
-    reponse = input(f"Résoudre l'équation suivante (si c'est une fraction, on arrondira à 2 chiffres après la virgule et on mettra un point à la place de la virgule) : {a}x + {b} = 0 : ")
+    reponse = input(f"Résoudre l'équation suivante (si c'est une fraction, on arrondira à 2 chiffres après la virgule et\n"
+                    f"on mettra un point à la place de la virgule) : {a}x + {b} = 0 : ")
     while not est_decimal(reponse):
         reponse = input("Merci de saisir un décimal : ")
     if round(float(reponse),2) == float(x):
@@ -121,7 +122,7 @@ def epreuve_math_premier()->bool:
     :return: True si une clé est gagnée, False sinon
     """
     n = randint(10,20)
-    print(f"Épreuve de Mathématiques: Trouver le nombre premier le plus proche de {n}.")
+    print(f"Trouver le nombre premier le plus proche de {n}.")
 
     reponse = input("Votre réponse : ")
     while not est_entier(reponse):
@@ -151,13 +152,13 @@ def roulette_mathematique()->bool:
             for n in nombres:
                 result += n
             print("Donnez le résultat de l'addition de tout les nombres entre eux.\n"+
-                  "Exemple : [1,2,3] = 1+2+3 = 6")
+                  "Exemple : [1,2,3] = 1 + 2 + 3 = 6")
         case '-':
-            result = 0
-            for n in nombres:
+            result = nombres[0]
+            for n in nombres[1:]:
                 result -= n
             print("Donnez le résultat de la soustraction de tout les nombres entre eux.\n"+
-                  "Exemple : [1,2,3] = -1-2-3 = -6")
+                  "Exemple : [1,2,3] = 1 - 2 - 3 = -4")
         case '*':
             result = 1
             for n in nombres:
