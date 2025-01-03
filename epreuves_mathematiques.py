@@ -80,7 +80,8 @@ def epreuve_math_equation()->bool:
     :return: True si une clé est gagnée, False sinon
     """
     (a,b,x) = resoudre_equation_lineaire()
-    reponse = input(f"Résoudre l'équation suivante (si c'est une fraction, on arrondira à 2 chiffres après la virgule et on mettra un point à la place de la virgule) : {a}x + {b} = 0 : ")
+    reponse = input(f"Résoudre l'équation suivante (si c'est une fraction, on arrondira à 2 chiffres après la virgule et\n"
+                    f"on mettra un point à la place de la virgule) : {a}x + {b} = 0 : ")
     while not est_decimal(reponse):
         reponse = input("Merci de saisir un décimal : ")
     if round(float(reponse),2) == float(x):
@@ -121,7 +122,7 @@ def epreuve_math_premier()->bool:
     :return: True si une clé est gagnée, False sinon
     """
     n = randint(10,20)
-    print(f"Épreuve de Mathématiques: Trouver le nombre premier le plus proche de {n}.")
+    print(f"Trouver le nombre premier le plus proche de {n}.")
 
     reponse = input("Votre réponse : ")
     while not est_entier(reponse):
@@ -185,3 +186,6 @@ def epreuve_math()->None:
     epreuves = [epreuve_math_factorielle, epreuve_math_equation, epreuve_math_premier, roulette_mathematique]
     epreuve = epreuves[randint(0,3)]
     epreuve()
+
+while True:
+    epreuve_math()
