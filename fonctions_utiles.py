@@ -1,10 +1,13 @@
+from epreuves_mathematiques import epreuve_math
+
 
 ##########
 
 def bold(text:str)->str:
     return "\033[1m" + text + "\033[0m"
 
-def introduction():
+def introduction()->None:
+    """Affiche le script d'introduction de fort boyard."""
     print(
         bold("🎙️ Denis brognard :") +'\n'
         "Salut tout le monde, et bienvenue dans l’incroyable aventure de Fort Boyard ! \n"
@@ -31,14 +34,18 @@ def introduction():
         )
 
 def composer_equipe()->list[dict]:
+    """
+    Permet de composer une équipe de 1 à 3 joueurs.
+    :return: une liste de dictionnaire contenant le nom, la profession, si le joueur est le leader de l'équipe, et le nombre de clé qu'il a gagné
+    """
     liste_joueurs = []
-    n = input("Combien de joueurs se joindrons à l'aventure ? (PS: le bateau ne peut accueillir que 3 joueurs max) : ")
-    while not (ord('1') <= ord(n) <= ord('3')):
-        n = input("Le bateau doit transporter entre 1 et 3 joueurs. \n"
-                  "Merci de saisir un nombre de joueur valide : ")
+    n = int(input("Combien de joueurs se joindrons à l'aventure ? (PS: le bateau ne peut accueillir que 3 joueurs max) : "))
+    while not 1 <= n <= 3:
+        n = int(input("Le bateau doit transporter entre 1 et 3 joueurs. \n"
+                  "Merci de saisir un nombre de joueur valide : "))
 
     leader_present = False
-    for i in range(int(n)):
+    for i in range(n):
         print(f"Joueur n°{i+1}, nous avons besoin de quelques informations sur vous.")
         nom = input("Quel est votre nom ? \n>")
         profession = input("Quel est votre profession ? \n>")
@@ -61,3 +68,14 @@ def composer_equipe()->list[dict]:
         liste_joueurs[0]["est_leader"] = True
 
     return liste_joueurs
+
+def menu_epreuves()->None:
+    print(
+        "1. Épreuve de Mathématiques \n"
+        "2. Épreuve de Logique \n"
+        "3. Épreuve du hasard \n"
+        "4. Énigme du Père Fouras \n")
+    choix = int(input("Choix : "))
+    while 1 <= choix <= 4:
+        choix = int(input("Merci de choisir un entier entre 1 et 4 : "))
+
