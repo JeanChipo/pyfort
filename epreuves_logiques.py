@@ -138,7 +138,7 @@ def verif_win(plateau:list,player:str)-> int:
     return 0
 
 
-def tictactoe(joueur)->bool:
+def tictactoe(joueur:str)->bool:
     """
     Le joueur et le maître du jeu (IA) s'affrontent dans une partie classique de morpion. 
     Le premier à aligner trois symboles identiques (horizontalement, verticalement, ou en
@@ -580,3 +580,9 @@ def la_vraie_bataille_navale(joueur:str)->None:
                 afficher_plateau(plateau_des_coup, plateau_joueur) # affiche le plateau pour que le joueur puisse voie qu'il a perdu
                 print(f"Vous avez perdu {joueur}") # affichage de défaite
                 return False # le joueur a perdu, fin du jeu
+
+def epreuve_logique(joueur)->None:
+    """ Execute une fonction aléatoire du module epreuves_logiques """
+    epreuves = [tictactoe, la_vraie_bataille_navale]
+    epreuve = epreuves[randint(0,1)]
+    epreuve(joueur)

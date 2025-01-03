@@ -1,5 +1,7 @@
 from epreuves_mathematiques import epreuve_math
-
+from epreuves_logiques import epreuve_logique
+from epreuves_hasard import epreuve_hasard
+from enigme_pere_fouras import enigme_pere_fouras
 
 ##########
 
@@ -69,13 +71,19 @@ def composer_equipe()->list[dict]:
 
     return liste_joueurs
 
-def menu_epreuves()->None:
+def menu_epreuves():
     print(
         "1. Épreuve de Mathématiques \n"
         "2. Épreuve de Logique \n"
         "3. Épreuve du hasard \n"
         "4. Énigme du Père Fouras \n")
     choix = int(input("Choix : "))
-    while 1 <= choix <= 4:
+    while not 1 <= choix <= 4:
         choix = int(input("Merci de choisir un entier entre 1 et 4 : "))
+    match choix:
+        case 1: return epreuve_math()
+        case 2: return epreuve_logique(joueur="Joueur 1")
+        case 3: return epreuve_hasard()
+        case 4: return enigme_pere_fouras()
+
 

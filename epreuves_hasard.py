@@ -59,3 +59,9 @@ def jeu_lance_des():
         return jeu_lance_des()
     else:
         return win
+
+def epreuve_hasard()->None:
+    """ Execute une fonction aléatoire du module epreuves_mathematiques """
+    epreuves = [bonneteau, jeu_lance_des]
+    epreuve = epreuves[randint(0,1)]
+    epreuve()

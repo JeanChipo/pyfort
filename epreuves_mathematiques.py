@@ -186,6 +186,3 @@ def epreuve_math()->None:
     epreuves = [epreuve_math_factorielle, epreuve_math_equation, epreuve_math_premier, roulette_mathematique]
     epreuve = epreuves[randint(0,3)]
     epreuve()
-
-while True:
-    roulette_mathematique()
