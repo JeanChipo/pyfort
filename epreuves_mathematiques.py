@@ -152,13 +152,13 @@ def roulette_mathematique()->bool:
             for n in nombres:
                 result += n
             print("Donnez le résultat de l'addition de tout les nombres entre eux.\n"+
-                  "Exemple : [1,2,3] = 1+2+3 = 6")
+                  "Exemple : [1,2,3] = 1 + 2 + 3 = 6")
         case '-':
             result = nombres[0]
             for n in nombres[1:]:
                 result -= n
             print("Donnez le résultat de la soustraction de tout les nombres entre eux.\n"+
-                  "Exemple : [1,2,3] = -1-2-3 = -6")
+                  "Exemple : [1,2,3] = 1 - 2 - 3 = -4")
         case '*':
             result = 1
             for n in nombres:
@@ -188,4 +188,4 @@ def epreuve_math()->None:
     epreuve()
 
 while True:
-    epreuve_math()
+    roulette_mathematique()
