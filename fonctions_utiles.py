@@ -71,7 +71,11 @@ def composer_equipe()->list[dict]:
 
     return liste_joueurs
 
-def menu_epreuves():
+def menu_epreuves()->None | bool:
+    """
+    affiche le menu des épreuves permettant à l'utilisateur de choisir parmi différents types d'épreuves disponibles
+    :return: None si l'utilisateur choisi l'épreuve 1, 2 ou 3 / si il choisi l'énigme du père fouras, True si il répond correctement et False sinon
+    """
     print(
         "1. Épreuve de Mathématiques \n"
         "2. Épreuve de Logique \n"
@@ -87,6 +91,11 @@ def menu_epreuves():
         case 4: return enigme_pere_fouras()
 
 def choisir_joueur(equipe)->dict:
+    """
+    permet à l'utilisateur de sélectionner un joueur de l'équipe pour participer à une épreuve
+    :param equipe: une liste de dictionnaire contenant les joueurs
+    :return: un dictionnaire contenant le joueur choisi
+    """
     for i in range(len(equipe)):
         if equipe[i]["est_leader"]: print(f"{i+1}. {equipe[i]['nom']} ({equipe[i]['profession']}) - Leader")
         else: print(f"{i+1}. {equipe[i]['nom']} ({equipe[i]['profession']}) - Membre")
