@@ -152,8 +152,8 @@ def roulette_mathematique()->bool:
                 result += n
             print("Calculez le résultat en combinant ces nombres avec une addition.")
         case '-':
-            result = 0
-            for n in nombres:
+            result = nombres[0]
+            for n in nombres[1:]:
                 result -= n
             print("Calculez le résultat en combinant ces nombres avec une soustraction.")
         case '*':
