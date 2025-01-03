@@ -1,63 +1,61 @@
-from random import choice,randint
+from random import choice, randint
 
 def bonneteau():
     """
     Jeu du bonneteau.
-    Jeu qui consiste a trouver la bonne réponce entre 3 possibilité, le joueur n'a que 2 chance et a chaque chance la bonne réponce est replacé
-
+    Jeu qui consiste à trouver la bonne réponse parmi 3 possibilités. Le joueur n'a que 2 chances, et à chaque tentative, la bonne réponse est replacée.
     :return: booléen, True si le joueur a gagné, False sinon.
     """
-    win = False # initialisation de la win a False car si le joueur ne gagne pas cette valeur ne sera pas modifier
-    print("dans ce jeu vous aurez le choix entre 3 choix (A, B, C), il faudra que vous trouviez la bonne proposition, vous n'aurez que 2 chance et pour chaque chance le bon choix sera replacer aléatoirement")
+    win = False # initialisation de la win à False car si le joueur ne gagne pas cette valeur ne sera pas modifiée
+    print("Dans ce jeu, vous aurez le choix entre 3 options (A, B, C). Il faudra que vous trouviez la bonne proposition. Vous n'aurez que 2 chances, et pour chaque tentative, le bon choix sera replacé aléatoirement.")
 
-    for i in range(2): # boucle du nombre de chance qu'a le joueur de gagner
-        bonne_reponce = choice(["A","B","C"]) # choix aléatoir de la bonne réponce
-        print(f"vous avez encor {2 - i} chance") # affichage du nombre de cahnce qu'il reste
+    for i in range(2): # boucle du nombre de chances qu'a le joueur de gagner
+        bonne_reponse = choice(["A", "B", "C"]) # choix aléatoire de la bonne réponse
+        print(f"Vous avez encore {2 - i} chance(s)") # affichage du nombre de chances restantes
 
-        while True: # boucle qui demande en boucle une saisie si elle n'est pas A, B ou C (ce qui évite de pèrdre une tentative au joueur si il fait un erreur de frape)
-            choix = input(f"Veuillez choisire entre les trois choix possible (A, B, C) : ")
+        while True: # boucle qui demande en boucle une saisie si elle n'est pas A, B ou C (ce qui évite de perdre une tentative si le joueur fait une erreur de frappe)
+            choix = input(f"Veuillez choisir entre les trois options possibles (A, B, C) : ")
             if (len(choix) == 1 and 'A' <= choix <= 'C'):
                 break
             else:
-                print("Saisie incorrect")
+                print("Saisie incorrecte")
 
-        if choix == bonne_reponce: # regarde si le choix du joueur est la  réponce
-            print("Bravo vous avez trouvé la bonne réponse") # affichage de win
-            win = True # changement de win a True pour signifier que le joueur a gagner
+        if choix == bonne_reponse: # vérifie si le choix du joueur est la bonne réponse
+            print("Bravo, vous avez trouvé la bonne réponse") # affichage en cas de victoire
+            win = True # changement de win à True pour signifier que le joueur a gagné
             break
 
-    if not win: # affichage de défète si le joueur ne trouve pas la bonne réponce a tout ses essay
+    if not win: # affichage de défaite si le joueur ne trouve pas la bonne réponse à toutes ses tentatives
         print("Vous avez perdu")
 
     return win
 
 def jeu_lance_des():
     """
-    jeu du lancer de dé
-    Jeu qui consiste a lancer un dé et le premier qui tombe sur 6 gagne
-
-    :return: booléen, True si le joueur gagne et False si il perd
+    Jeu du lancer de dé.
+    Jeu qui consiste à lancer un dé, et le premier à tomber sur 6 gagne.
+    :return: booléen, True si le joueur gagne, False s'il perd.
     """
 
     win = None
-    for i in range(6): # nombre de coup du joueur et du maitre
-        de = randint(1,6) # valeur du dé lancer
-        if i%2 == 0: # c'est au tour du joueur quand la valeur de la boucle est paire
-            print(f"\nVous avez encor {int((6-i)/2)} tentative") # affichage du nombre de tentative
-            exe = input("appuiler sur entrer pour lancer votre dé : ") # input qui permet d'afficher le dé uniquement quand le joueur apuis sur entré
-            print(f"votre dé est tomber sur {de}") # affichage du dé
-            if de == 6: # si le dé est égale a 6 le jouer gagner et la boucle s'arrète
-                print("vous avez gagné\n")
+    for i in range(6): # nombre de tours pour le joueur et le maître
+        de = randint(1, 6) # valeur du dé lancé
+        if i % 2 == 0: # c'est au tour du joueur quand la valeur de la boucle est paire
+            print(f"\nVous avez encore {int((6 - i) / 2)} tentative(s)") # affichage du nombre de tentatives restantes
+            exe = input("Appuyez sur Entrée pour lancer votre dé : ") # input qui permet d'afficher le dé uniquement quand le joueur appuie sur Entrée
+            print(f"Votre dé est tombé sur {de}") # affichage du résultat du lancer
+            if de == 6: # si le dé est égal à 6, le joueur gagne et la boucle s'arrête
+                print("Vous avez gagné\n")
                 win = True
                 break
 
-        else: # c'est au tour du maitre quand la valeur de la boucle est impaire
-            print(f"\nLe maitre joue son dé \nSon dé tombe sur {de} ") # affichage du tour du maitre et sur quel face son dé est tombé
-            if de == 6: # si le dé du maitre tombe sur 6, la boucle s'arrète et le joueur a perdu
-                print("vous avez perdu\n")
+        else: # c'est au tour du maître quand la valeur de la boucle est impaire
+            print(f"\nLe maître joue son dé \nSon dé tombe sur {de}") # affichage du tour du maître et du résultat de son dé
+            if de == 6: # si le dé du maître tombe sur 6, la boucle s'arrête et le joueur a perdu
+                print("Vous avez perdu\n")
                 win = False
-    if win == None: # si la valeur de win n'a pas changer cela veut dire que personne n'a gagné et donc on relance le jeu
-        print("Match nul\nLe jeu redémarde")
+    if win == None: # si la valeur de win n'a pas changé, cela veut dire que personne n'a gagné et donc on relance le jeu
+        print("Match nul\nLe jeu redémarre")
         return jeu_lance_des()
     else:
         return win
